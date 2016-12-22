@@ -8,10 +8,12 @@ namespace Vsite.CSharp
     {
         static void Main(string[] args)
         {
-            // TODO: Provjeriti koja sučelja implementira klasa System.Collections.Generic.Queue<T>
+            //  Provjeriti koja sučelja implementira klasa System.Collections.Generic.Queue<T>
             Queue<string> red = new Queue<string>(new string[] { "Mirko", "Slavko", "Jure" });
 
             // TODO: Napisati naredbu koja će pomoću metode Queue<T>.Enqueue() dodati još jedan element u 'red' 
+            red.Enqueue("Pero");
+            IspišiSveElemente(red);
 
             // TODO: Proslijediti objekt 'red' metodi IspišiSveElemente():
 
@@ -22,7 +24,7 @@ namespace Vsite.CSharp
         public static void IspišiSveElemente<T>(IEnumerable<T> elementi)
         {
             // TODO: Napraviti eksplicitnu pretvorbu proslijeđenog argumenta u ICollection i ispisati broj elemenata.
-
+           Console.WriteLine (((ICollection)elementi).Count);
             foreach (var e in elementi)
             {
                 Console.WriteLine(e);
