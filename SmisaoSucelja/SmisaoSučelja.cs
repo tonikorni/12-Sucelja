@@ -5,6 +5,18 @@ namespace Vsite.CSharp
 {
     public class SmisaoSučelja
     {
+        class UsporedbaPoImenu : IComparer<Osoba>
+        {
+            public int Compare(Osoba x, Osoba y)
+            {
+                return x.Ime.CompareTo(y.Ime);
+            }
+
+            public int CompareTo(Osoba other)
+            {
+                throw new NotImplementedException();
+            }
+        }
         static void Ispiši(List<Osoba> list)
         {
             foreach (Osoba o in list)
@@ -19,17 +31,29 @@ namespace Vsite.CSharp
         public static void SortiranoPoImenu(List<Osoba> osobe)
         {
             // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(IComparer(T)) abecedno sortirati osobe prema njihovim imenima.
+            UsporedbaPoImenu upi = new UsporedbaPoImenu();
+            osobe.Sort(upi);
+
         }
+
+
 
         public static void SortiranoPoDatumuRođenja(List<Osoba> osobe)
         {
             // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(Comparison(T)) sortirati osobe prema njihovim datumima roðenja.
+
+            osobe.Sort((x, y) => x.DatumRoðenja.CompareTo(y.DatumRoðenja));
         }
+
+
 
         public static void SortiranoPoMjestuRođenja(List<Osoba> osobe)
         {
             // TODO: Koristeæi preoptereæenu inaèicu metode List<T>.Sort(Comparison(T)) osobe sortirati prema njihovim mjestima roðenja.
+            
+            osobe.Sort((x,y)=> x.MjestoRoðenja.CompareTo(y.MjestoRoðenja));
         }
+
 
         static void Main(string[] args)
         {
